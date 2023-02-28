@@ -1,0 +1,26 @@
+{
+  "name": "@libtool/libtool",
+  "version": "1.0.0",
+  "description": "@libtool/libtool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "buildOptions":{
+    "name":"libtool"
+  },
+  "keywords": [
+    "postil",
+    "protobuf",
+    "webcodec",
+    "webrtc",
+    "webAudio",
+    "canvas",
+    "javascript"
+  ],
+  "author": "dyy",
+  "license": "ISC",
+  "dependencies": {
+    "@libtool/postil": "workspace:^1.0.0"
+  }
+}

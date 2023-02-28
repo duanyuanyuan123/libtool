@@ -1,0 +1,13 @@
+{
+  "name": "@libtool/protobuf",
+  "version": "1.0.0",
+  "description": "@libtool/protobuf",
+  "main": "index.js",
+  "module": "dist/protobuf.esm-bundler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["protobuf","javascript","ArrayBuffer"],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@libtool/webcodec",
+  "version": "1.0.0",
+  "description": "@libtool/webcodec",
+  "main": "index.js",
+  "module": "dist/webcodec.esm-bundler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["webcodec","javascript","video","webrtc"],
+  "author": "",
+  "license": "ISC"
+}
