@@ -15,6 +15,7 @@ const pkg = require(resolve(`package.json`)) //读取子包里面的package.json
 const packageOptions = pkg.buildOptions || {}  //获取子包配置buildOptions配置项
 
 const name = packageOptions.name || path.basename(packageDir)
+console.log(name)
 
 // ensure TS checks only once for each build
 // 全局记录TS检测状态，完成一次检测后记录状态，防止多次检测，出现错误。
@@ -73,11 +74,12 @@ function createConfig(format, output, plugins = []) {
   const isBundlerESMBuild = /esm-bundler/.test(format)
   const isBrowserESMBuild = /esm-browser/.test(format)
   const isGlobalBuild = /global/.test(format)
-  const isCompatPackage = pkg.name === '@finesdk/compat'
+  const isCompatPackage = pkg.name === '@libtool/compat'
 
   output.sourcemap = !!process.env.SOURCE_MAP
   output.externalLiveBindings = false
   console.log(format)
+  console.log(isGlobalBuild)
   if (isGlobalBuild) {
     output.name = packageOptions.name
   }
@@ -92,12 +94,16 @@ function createConfig(format, output, plugins = []) {
     tsconfigOverride: {
       compilerOptions: {
         sourceMap: output.sourcemap,
-        declaration: shouldEmitDeclarations,
-        declarationMap: shouldEmitDeclarations
+        declaration: false,
+        declarationMap: false
       },
       exclude: ['**/__tests__', 'test-dts']
     }
   })
+  console.log(isGlobalBuild,'console.log(isGlobalBuild)')
+  console.log(path.resolve(__dirname, 'tsconfig.json'),'tsconfig')
+  console.log(process.env.NODE_ENV === 'production' && !hasTSChecked,'hasTSChecked')
+  console.log(output.sourcemap,'output.sourcemap')
   // we only need to check TS and generate declarations once for each build.
   // it also seems to run into weird issues when checking multiple times
   // during a single build.
@@ -148,7 +154,11 @@ function createConfig(format, output, plugins = []) {
           require('@rollup/plugin-node-resolve').nodeResolve()
         ]
       : []
-
+  // console.log(resolve(entryFile),'input')
+  // console.log(output,'output')
+  // console.log(external,'external')
+  console.log(tsPlugin,'tsPlugin')
+  // console.log(nodePlugins,'nodePlugins')
   return {
     input: resolve(entryFile),
     output,

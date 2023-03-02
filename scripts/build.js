@@ -89,6 +89,7 @@ async function build(target) {
     (pkg.buildOptions && pkg.buildOptions.env) ||
     (devOnly ? 'development' : 'production')
     console.log(env)
+    console.log(formats)
   await execa(
     'rollup',
     [
